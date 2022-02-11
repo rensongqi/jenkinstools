@@ -16,6 +16,10 @@ jenkinstools是一个命令行小工具，目前可实现同一个jenkins下的�
     UserName="rensongqi"
     Password="123456"
 
+生成可执行文件
+
+    go buid -o jenkinstools.exe
+
 ### 2.1 拷贝jobs from folder(-c)
 
     jenkinstools.exe -c rsq_test1 rsq_test2 test1 test2
@@ -30,31 +34,37 @@ jenkinstools是一个命令行小工具，目前可实现同一个jenkins下的�
 
 ### 2.2 创建目录folder(-f)
 
-1. 指定在RSQ的View下的rsq_tes1目录下创建rsq_folder目录
- 
+1、指定在RSQ的View下的rsq_tes1目录下创建rsq_folder目录
+```
     jenkinstools.exe -f rsq_folder RSQ rsq_test1
-   
-2. 指定在rsq_test1的Folder下创建rsq_test1 folder
-
+``` 
+2、指定在rsq_test1的Folder下创建rsq_test1 folder
+``` 
     jenkinstools.exe -f rsq_folder "" rsq_test1
-    
-3. 直接在ALL View视图下创建Folder(只需要把不需要的参数为空即可)
-
+``` 
+3、直接在ALL View视图下创建Folder(只需要把不需要的参数为空即可)
+``` 
     jenkinstools.exe  -f rsq_folder "" ""
-
+``` 
 ### 2.3 创建View(-v)
 
 目前只支持两种ViewType：ListView和MyView
 
-1. 指定ViewType创建View(创建名为RSQ的类型为MyView的View)
+1、指定ViewType创建View(创建名为RSQ的类型为MyView的View)
+``` 
+jenkinstools.exe -v RSQ MyView
+``` 
+2、如果不指定ViewType，默认会创建ListView的View
+``` 
+jenkinstools.exe -v RSQ ""
+``` 
+## 2.4 从xml导入Job(-j)
 
-    jenkinstools.exe -v RSQ MyView
-    
-2. 如果不指定ViewType，默认会创建ListView的View
+示例如下, -j需要给两个参数，一个是jobName，另一个是xml，可以直接解析http链接：
+```
+jenkinstools.exe rsqtest "http://jenkins.rsq.local/view/rensonqgi/job/test/config.xml"
+```
 
-    jenkinstools.exe -v RSQ ""
-    
-    
 ## 3 Attention
 
 最好标准化项目的命名规范，这样copy jobs的功能可以最大化实现。

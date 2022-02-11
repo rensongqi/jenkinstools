@@ -34,11 +34,12 @@ func ConnectJenkins() *gojenkins.Jenkins {
 func Usage() {
 	fmt.Fprintf(os.Stderr,
 		`
-Jenkins Tools, Version: 1.0.0
-Usage: jenkinsTools [-c|-f|-h|-v]
+Jenkins Tools, Version: 1.0.1
+Usage: jenkinsTools [-c|-f|-h|-j|-v]
 	-c,		copy jobs from different folder
 	-f,		create folder
 	-h,		for help
+	-j,		create jenkins job
 	-v,		create view
 
 Options:
